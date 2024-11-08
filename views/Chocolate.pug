@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{ brand: "Lindt", flavour: "Dark Chocolate", cocoaPercentage: 85 }, { brand: "Cadbury", flavour: "Milk Chocolate", cocoaPercentage: 30 }, { brand: "Godiva", flavour: "Hazelnut", cocoaPercentage: 50 }];
+  .container-fluid
+    .row
+      each item, index in results
+        div(class="col-sm-2", onclick=`buy(${index})`)
+          h3 #{item.brand}
+          p Flavour: #{item.flavour}
+          p Cocoa Percentage: #{item.cocoaPercentage}
+
+          script.
+           function buy(itemNum) {
+            alert(`You purchased item ${itemNum + 1}`);
+           }
